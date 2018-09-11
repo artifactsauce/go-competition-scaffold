@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -16,15 +17,16 @@ func main() {
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
+	for i := 0; scanner.Scan(); i++ {
 		t := scanner.Text()
-		solv(t)
+		s := strings.Split(t, " ")
+		solv(i, s)
 	}
 	if err := scanner.Err(); err != nil {
 		log.Fatal(err)
 	}
 }
 
-func solv(f string) {
-	fmt.Printf("%v\n", f)
+func solv(i int, s []string) {
+	fmt.Printf("#%d %v\n", i, s)
 }
