@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -17,16 +18,31 @@ func main() {
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
-	for i := 0; scanner.Scan(); i++ {
+
+	if !scanner.Scan() {
+		log.Fatal("Can not scan input file")
+	}
+	t := scanner.Text()
+	t = strings.TrimRight(t, "\n")
+	totalCaseNum, _ := strconv.Atoi(t)
+
+	actualCaseNum := 0
+	for i := 1; scanner.Scan(); i++ {
 		t := scanner.Text()
-		s := strings.Split(t, " ")
-		solv(i, s)
+		t = strings.TrimRight(t, "\n")
+		a := strings.Split(t, " ")
+		s := solv(i, a)
+		fmt.Printf("Case #%d: %v\n", i, s)
+		actualCaseNum = i
+	}
+	if totalCaseNum != actualCaseNum {
+		log.Fatal("Total case number does not match actual case number.")
 	}
 	if err := scanner.Err(); err != nil {
 		log.Fatal(err)
 	}
 }
 
-func solv(i int, s []string) {
-	fmt.Printf("#%d %v\n", i, s)
+func solv(i int, a []string) []string {
+	return a
 }
