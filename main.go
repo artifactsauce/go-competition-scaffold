@@ -24,7 +24,7 @@ func main() {
 	}
 	t := scanner.Text()
 	t = strings.TrimRight(t, "\n")
-	totalCaseNum, _ := strconv.Atoi(t)
+	expectCaseNum, _ := strconv.Atoi(t)
 
 	actualCaseNum := 0
 	for i := 1; scanner.Scan(); i++ {
@@ -35,7 +35,7 @@ func main() {
 		fmt.Printf("Case #%d: %v\n", i, s)
 		actualCaseNum = i
 	}
-	if totalCaseNum != actualCaseNum {
+	if expectCaseNum != actualCaseNum {
 		log.Fatal("Total case number does not match actual case number.")
 	}
 	if err := scanner.Err(); err != nil {
