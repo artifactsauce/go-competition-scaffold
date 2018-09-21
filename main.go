@@ -30,9 +30,9 @@ func main() {
 	for i := 1; scanner.Scan(); i++ {
 		t := scanner.Text()
 		t = strings.TrimRight(t, "\n")
-		a := strings.Split(t, " ")
-		s := solv(i, a)
-		fmt.Printf("Case #%d: %v\n", i, s)
+		s := strings.Split(t, " ")
+		r := solv(i, s)
+		fmt.Printf("Case #%d: %v\n", i, r)
 		actualCaseNum = i
 	}
 	if expectCaseNum != actualCaseNum {
@@ -43,6 +43,6 @@ func main() {
 	}
 }
 
-func solv(i int, a []string) []string {
-	return a
+func solv(i int, s []string) []string {
+	return s
 }
