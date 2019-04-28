@@ -29,7 +29,7 @@ func main() {
 		actualCaseNum = i
 	}
 	if expectCaseNum != actualCaseNum {
-		log.Fatal("Total case number does not match actual case number.")
+		log.Fatalf("Total case number does NOT match. expect: %d; actual: %d", expectCaseNum, actualCaseNum)
 	}
 	if err := scanner.Err(); err != nil {
 		log.Fatal(err)
