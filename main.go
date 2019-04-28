@@ -10,17 +10,10 @@ import (
 )
 
 func main() {
-	input := os.Args[1]
-	file, err := os.Open(input)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
+	scanner := bufio.NewScanner(os.Stdin)
 
 	if !scanner.Scan() {
-		log.Fatal("Can not scan input file")
+		log.Fatal("Can not read stdin")
 	}
 	t := scanner.Text()
 	t = strings.TrimRight(t, "\n")
